@@ -1,0 +1,40 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NL4D", "NL4D\NL4D.csproj", "{F1A44D1E-61B9-45F4-A619-32BDC46617A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NL4D.MCMBridge", "NL4D.MCMBridge\NL4D.MCMBridge.csproj", "{974DF4A3-4DF8-4C67-BA9E-E865181559C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Update|Any CPU = Update|Any CPU
+		Hotfix|Any CPU = Hotfix|Any CPU
+		BigUpdate|Any CPU = BigUpdate|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1A44D1E-61B9-45F4-A619-32BDC46617A1}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{F1A44D1E-61B9-45F4-A619-32BDC46617A1}.Debug|Any CPU.Build.0 = Debug|x64
+		{F1A44D1E-61B9-45F4-A619-32BDC46617A1}.Update|Any CPU.ActiveCfg = Update|x64
+		{F1A44D1E-61B9-45F4-A619-32BDC46617A1}.Update|Any CPU.Build.0 = Update|x64
+		{F1A44D1E-61B9-45F4-A619-32BDC46617A1}.Hotfix|Any CPU.ActiveCfg = Hotfix|x64
+		{F1A44D1E-61B9-45F4-A619-32BDC46617A1}.Hotfix|Any CPU.Build.0 = Hotfix|x64
+		{F1A44D1E-61B9-45F4-A619-32BDC46617A1}.BigUpdate|Any CPU.ActiveCfg = BigUpdate|x64
+		{F1A44D1E-61B9-45F4-A619-32BDC46617A1}.BigUpdate|Any CPU.Build.0 = BigUpdate|x64
+		{F1A44D1E-61B9-45F4-A619-32BDC46617A1}.Release|Any CPU.ActiveCfg = Release|x64
+		{F1A44D1E-61B9-45F4-A619-32BDC46617A1}.Release|Any CPU.Build.0 = Release|x64
+		{974DF4A3-4DF8-4C67-BA9E-E865181559C3}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{974DF4A3-4DF8-4C67-BA9E-E865181559C3}.Debug|Any CPU.Build.0 = Debug|x64
+		{974DF4A3-4DF8-4C67-BA9E-E865181559C3}.Update|Any CPU.ActiveCfg = Update|x64
+		{974DF4A3-4DF8-4C67-BA9E-E865181559C3}.Update|Any CPU.Build.0 = Update|x64
+		{974DF4A3-4DF8-4C67-BA9E-E865181559C3}.Hotfix|Any CPU.ActiveCfg = Hotfix|x64
+		{974DF4A3-4DF8-4C67-BA9E-E865181559C3}.Hotfix|Any CPU.Build.0 = Hotfix|x64
+		{974DF4A3-4DF8-4C67-BA9E-E865181559C3}.BigUpdate|Any CPU.ActiveCfg = BigUpdate|x64
+		{974DF4A3-4DF8-4C67-BA9E-E865181559C3}.BigUpdate|Any CPU.Build.0 = BigUpdate|x64
+		{974DF4A3-4DF8-4C67-BA9E-E865181559C3}.Release|Any CPU.ActiveCfg = Release|x64
+		{974DF4A3-4DF8-4C67-BA9E-E865181559C3}.Release|Any CPU.Build.0 = Release|x64
+	EndGlobalSection
+EndGlobal

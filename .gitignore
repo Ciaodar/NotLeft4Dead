@@ -1,0 +1,10 @@
+NL4D/bin/
+NL4D/obj/
+NL4D.MCMBridge/bin/
+NL4D.MCMBridge/obj/
+/artifacts/
+*.user
+*.suo
+.vs/
+.idea/
+.agents/
