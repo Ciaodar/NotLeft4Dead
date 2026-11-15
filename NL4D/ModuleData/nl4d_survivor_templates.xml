@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+  <NPCCharacter id="nl4d_survivor_empire" name="{=nl4d_survivor_empire_name}Imperial Survivor" default_group="Infantry" occupation="Soldier" is_template="true" culture="Culture.empire">
+    <face>
+      <face_key_template value="BodyProperty.fighter_empire" />
+    </face>
+    <skills>
+      <skill id="OneHanded" value="120" />
+      <skill id="TwoHanded" value="100" />
+      <skill id="Polearm" value="110" />
+      <skill id="Athletics" value="130" />
+      <skill id="Riding" value="90" />
+      <skill id="Leadership" value="80" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="nl4d_survivor_vlandia" name="{=nl4d_survivor_vlandia_name}Vlandian Survivor" default_group="Infantry" occupation="Soldier" is_template="true" culture="Culture.vlandia">
+    <face>
+      <face_key_template value="BodyProperty.fighter_vlandia" />
+    </face>
+    <skills>
+      <skill id="OneHanded" value="120" />
+      <skill id="Polearm" value="120" />
+      <skill id="Riding" value="110" />
+      <skill id="Athletics" value="100" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="nl4d_survivor_sturgia" name="{=nl4d_survivor_sturgia_name}Sturgian Survivor" default_group="Infantry" occupation="Soldier" is_template="true" culture="Culture.sturgia">
+    <face>
+      <face_key_template value="BodyProperty.fighter_sturgia" />
+    </face>
+    <skills>
+      <skill id="OneHanded" value="130" />
+      <skill id="TwoHanded" value="120" />
+      <skill id="Athletics" value="120" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="nl4d_survivor_battania" name="{=nl4d_survivor_battania_name}Battanian Survivor" default_group="Infantry" occupation="Soldier" is_template="true" culture="Culture.battania">
+    <face>
+      <face_key_template value="BodyProperty.fighter_battania" />
+    </face>
+    <skills>
+      <skill id="Bow" value="130" />
+      <skill id="OneHanded" value="110" />
+      <skill id="Athletics" value="130" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="nl4d_survivor_aserai" name="{=nl4d_survivor_aserai_name}Aserai Survivor" default_group="Infantry" occupation="Soldier" is_template="true" culture="Culture.aserai">
+    <face>
+      <face_key_template value="BodyProperty.fighter_aserai" />
+    </face>
+    <skills>
+      <skill id="OneHanded" value="120" />
+      <skill id="Throwing" value="110" />
+      <skill id="Riding" value="110" />
+      <skill id="Athletics" value="110" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster />
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="nl4d_survivor_khuzait" name="{=nl4d_survivor_khuzait_name}Khuzait Survivor" default_group="Cavalry" occupation="Soldier" is_template="true" culture="Culture.khuzait">
+    <face>
+      <face_key_template value="BodyProperty.fighter_khuzait" />
+    </face>
+    <skills>
+      <skill id="Riding" value="130" />
+      <skill id="HorseArcher" value="130" />
+      <skill id="Polearm" value="110" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster />
+    </Equipments>
+  </NPCCharacter>
+</NPCCharacters>

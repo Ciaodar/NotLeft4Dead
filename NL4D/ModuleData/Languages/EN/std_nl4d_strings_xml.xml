@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <!-- MCM Settings -->
+  <string id="nl4d_mcm_display_name" text="Not Left 4 Dead" />
+  <string id="nl4d_mcm_group_general" text="General" />
+  <string id="nl4d_mcm_mod_enabled" text="Mod Enabled" />
+  <string id="nl4d_mcm_mod_enabled_hint" text="Master toggle to enable or disable Not Left 4 Dead battle aftermath survivor spawns." />
+  <string id="nl4d_mcm_relation_bonus" text="Survivor Relation Bonus" />
+  <string id="nl4d_mcm_relation_bonus_hint" text="Relation bonus awarded with the survivor upon rescuing and recruiting them (default: 100)." />
+  <string id="nl4d_mcm_custom_names" text="Use Custom Name &amp; Epithet Pool" />
+  <string id="nl4d_mcm_custom_names_hint" text="When enabled, survivors receive culture-appropriate gritty names and survivor epithets (defined in config.json)." />
+
+  <string id="nl4d_mcm_group_spawn" text="Spawn &amp; Battle Size" />
+  <string id="nl4d_mcm_min_spawn_chance" text="Minimum Base Spawn Chance" />
+  <string id="nl4d_mcm_min_spawn_chance_hint" text="Base probability of finding a survivor in the smallest qualifying battle (default: 15%)." />
+  <string id="nl4d_mcm_guaranteed_threshold" text="Guaranteed Casualty Threshold" />
+  <string id="nl4d_mcm_guaranteed_threshold_hint" text="Total battle casualties (killed + wounded) at which survivor discovery chance reaches 100% (default: 1500)." />
+  <string id="nl4d_mcm_spawn_multiplier" text="Spawn Chance Multiplier" />
+  <string id="nl4d_mcm_spawn_multiplier_hint" text="Overall multiplier applied to survivor spawn probability calculation." />
+  <string id="nl4d_mcm_winner_weight" text="Winning Side Survivor Weight" />
+  <string id="nl4d_mcm_winner_weight_hint" text="Probability that a survivor originates from the winning army instead of the defeated side when both sides had Lords (default: 35%)." />
+
+  <string id="nl4d_mcm_group_companions" text="Companion &amp; Pool Rules" />
+  <string id="nl4d_mcm_exceed_limit" text="Allow Exceeding Companion Limit" />
+  <string id="nl4d_mcm_exceed_limit_hint" text="If enabled, you can recruit battlefield survivors even if your clan has reached its companion capacity." />
+  <string id="nl4d_mcm_max_unrecruited" text="Max Unrecruited Survivors (World FIFO Cap)" />
+  <string id="nl4d_mcm_max_unrecruited_hint" text="Maximum number of unrecruited survivors wandering the realm. Spawning a new survivor past this limit removes the oldest unrecruited survivor (default: 5)." />
+  <string id="nl4d_mcm_wounded_min" text="Initial Wounded HP Ratio Min" />
+  <string id="nl4d_mcm_wounded_min_hint" text="Minimum initial health ratio for newly spawned wounded survivors (default: 15%)." />
+  <string id="nl4d_mcm_wounded_max" text="Initial Wounded HP Ratio Max" />
+  <string id="nl4d_mcm_wounded_max_hint" text="Maximum initial health ratio for newly spawned wounded survivors (default: 20%)." />
+
+  <string id="nl4d_mcm_group_debug" text="Debug" />
+  <string id="nl4d_mcm_debug_force_spawn" text="Force Spawn (Debug)" />
+  <string id="nl4d_mcm_debug_force_spawn_hint" text="Forces a survivor to spawn after ANY qualifying battle regardless of size or probability." />
+
+  <!-- Services & UI -->
+  <string id="nl4d_companion_limit_reached" text="You cannot recruit any more companions ({CURRENT}/{LIMIT})." />
+
+  <!-- Survivor Template Names -->
+  <string id="nl4d_survivor_empire_name" text="Imperial Survivor" />
+  <string id="nl4d_survivor_vlandia_name" text="Vlandian Survivor" />
+  <string id="nl4d_survivor_sturgia_name" text="Sturgian Survivor" />
+  <string id="nl4d_survivor_battania_name" text="Battanian Survivor" />
+  <string id="nl4d_survivor_aserai_name" text="Aserai Survivor" />
+  <string id="nl4d_survivor_khuzait_name" text="Khuzait Survivor" />
+
+  <!-- Wave 2 Rescue Dialogue (Multi-variant count / 1..N) -->
+  <string id="nl4d_rescue_defeated_lord_count" text="3" />
+  <string id="nl4d_rescue_defeated_lord_1" text="I was a loyal retainer of {SURVIVOR_LORD_NAME}. When the {ENEMY_FACTION_NAME} forces crashed upon us, he fled without a second thought, leaving me here bleeding among the dead. For {HOURS_SINCE_BATTLE} hours I have been lying here waiting for the vultures." />
+  <string id="nl4d_rescue_defeated_lord_2" text="My lord {SURVIVOR_LORD_NAME} ordered us to hold the line, then retreated the moment the flanks broke. The {ENEMY_FACTION_NAME} cut us down to the last man. I survived only by feigning death beneath a pile of corpses." />
+  <string id="nl4d_rescue_defeated_lord_3" text="The rout was total. {SURVIVOR_LORD_NAME} abandoned the rearguard to save his own skin, and the {ENEMY_FACTION_NAME} butchered our formation. I have been stranded here for {HOURS_SINCE_BATTLE} hours with a shattered shield." />
+
+  <string id="nl4d_rescue_winner_lord_count" text="3" />
+  <string id="nl4d_rescue_winner_lord_1" text="Even in victory, {SURVIVOR_LORD_NAME}'s army moved too fast during the pursuit and left the wounded behind in the mud. I've crawled miles since the battle ended." />
+  <string id="nl4d_rescue_winner_lord_2" text="We won the field, but {SURVIVOR_LORD_NAME} was so eager to claim the loot that my battalion's wounded were forgotten in the chaos. I've been stranded here ever since." />
+  <string id="nl4d_rescue_winner_lord_3" text="The victory celebrations started miles away while I lay pinned beneath my dead horse. {SURVIVOR_LORD_NAME}'s vanguard didn't even bother to sweep the field for survivors." />
+
+  <string id="nl4d_rescue_naval_lord_count" text="2" />
+  <string id="nl4d_rescue_naval_lord_1" text="Our transport ship splintered into matchwood when the enemy rams struck. I washed ashore clinging to a broken spar after hours adrift in the freezing surf." />
+  <string id="nl4d_rescue_naval_lord_2" text="The naval skirmish was a bloodbath. When our galley went down, I was dragged under by the drowning men and barely clawed my way up onto these rocky shores." />
+
+  <string id="nl4d_rescue_plea" text="You found me just in time. My previous ties ({SURVIVOR_RELATION}) mean nothing to lords who leave the fallen behind. Take me with you, and I swear my blade is yours." />
+  <string id="nl4d_rescue_accept" text="Agreed. Rise and join my company." />
+  <string id="nl4d_rescue_decline" text="You must find your own way to the nearest town." />
+  <string id="nl4d_rescue_accepted_reply" text="Thank you, captain. I live to fight another day under your banner." />
+  <string id="nl4d_rescue_declined_reply" text="As you wish... I will try to make my way to {TARGET_TOWN_NAME} on foot." />
+
+  <!-- Wave 2 Tavern Reunion Dialogue -->
+  <string id="nl4d_reunion_greeting" text="I haven't forgotten how you pulled me from the jaws of death, and I never will, captain. I am ready to join your ranks for good." />
+  <string id="nl4d_reunion_accept" text="Certainly, we will accomplish great things together. Come with me." />
+  <string id="nl4d_reunion_decline" text="Unfortunately, I still have no place for you right now." />
+  <string id="nl4d_reunion_accepted_reply" text="An honor, captain! Let us march." />
+  <string id="nl4d_reunion_declined_reply" text="Understood. I will wait here in the tavern until you have need of me." />
+
+  <!-- Notifications & Names -->
+  <string id="nl4d_name_with_epithet" text="{FIRST_NAME} {EPITHET}" />
+  <string id="nl4d_test_wreckage_name" text="Battle Aftermath ({ATTACKER} vs {DEFENDER})" />
+  <string id="nl4d_msg_survivor_found" text="Among the debris and fallen soldiers, you hear a faint groan... A survivor clings to life!" />
+  <string id="nl4d_msg_survivor_recruited" text="{HERO_NAME} has joined your party as a loyal companion." />
+  <string id="nl4d_msg_survivor_sent_town" text="{HERO_NAME} has been escorted to {TARGET_TOWN_NAME}. You can find them in the local tavern." />
+  <string id="nl4d_msg_survivor_evicted" text="{SURVIVOR_NAME} has left your service due to inactivity or world cap limits." />
+</strings>

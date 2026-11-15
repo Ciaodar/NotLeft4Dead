@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<strings>
+  <!-- MCM Settings -->
+  <string id="nl4d_mcm_display_name" text="Not Left 4 Dead" />
+  <string id="nl4d_mcm_group_general" text="Genel" />
+  <string id="nl4d_mcm_mod_enabled" text="Mod Etkin" />
+  <string id="nl4d_mcm_mod_enabled_hint" text="Not Left 4 Dead savaş sonrası hayatta kalan bulma mekaniğini etkinleştirir veya devre dışı bırakır." />
+  <string id="nl4d_mcm_relation_bonus" text="Hayatta Kalan İlişki Bonusu" />
+  <string id="nl4d_mcm_relation_bonus_hint" text="Kurtarılan ve gruba dahil edilen hayatta kalan ile kazanılan başlangıç ilişki bonusu (varsayılan: 100)." />
+  <string id="nl4d_mcm_custom_names" text="Özel İsim ve Lakap Havuzunu Kullan" />
+  <string id="nl4d_mcm_custom_names_hint" text="Etkinleştirildiğinde, hayatta kalanlar kültüre uygun sert isimler ve lakaplar alırlar (config.json içinde tanımlıdır)." />
+
+  <string id="nl4d_mcm_group_spawn" text="Çıkış Olasılığı ve Savaş Boyutu" />
+  <string id="nl4d_mcm_min_spawn_chance" text="Minimum Temel Çıkış Olasılığı" />
+  <string id="nl4d_mcm_min_spawn_chance_hint" text="En küçük geçerli savaşta hayatta kalan bulma olasılığı (varsayılan: %15)." />
+  <string id="nl4d_mcm_guaranteed_threshold" text="Garantili Kayıp Eşiği" />
+  <string id="nl4d_mcm_guaranteed_threshold_hint" text="Hayatta kalan bulma olasılığının %100'e ulaştığı toplam savaş kaybı (ölü + yaralı) eşiği (varsayılan: 1500)." />
+  <string id="nl4d_mcm_spawn_multiplier" text="Çıkış Olasılığı Çarpanı" />
+  <string id="nl4d_mcm_spawn_multiplier_hint" text="Hayatta kalan çıkış olasılığı hesaplamasına uygulanan genel çarpan." />
+  <string id="nl4d_mcm_winner_weight" text="Kazanan Taraf Hayatta Kalan Ağırlığı" />
+  <string id="nl4d_mcm_winner_weight_hint" text="Her iki tarafta da Lord olduğunda, hayatta kalanın mağlup taraf yerine kazanan ordudan çıkma olasılığı (varsayılan: %35)." />
+
+  <string id="nl4d_mcm_group_companions" text="Yoldaş ve Havuz Kuralları" />
+  <string id="nl4d_mcm_exceed_limit" text="Yoldaş Limitini Aşmaya İzin Ver" />
+  <string id="nl4d_mcm_exceed_limit_hint" text="Etkinleştirilirse, klanınız yoldaş kapasitesine ulaşmış olsa bile savaş alanı hayatta kalanlarını işe alabilirsiniz." />
+  <string id="nl4d_mcm_max_unrecruited" text="Maksimum Alınmamış Hayatta Kalan (Dünya FIFO Sınırı)" />
+  <string id="nl4d_mcm_max_unrecruited_hint" text="Dünyada başı boş dolaşan maksimum alınmamış hayatta kalan sayısı. Bu sınır aşıldığında en eski hayatta kalan kaldırılır (varsayılan: 5)." />
+  <string id="nl4d_mcm_wounded_min" text="Başlangıç Yaralı Can Oranı Min" />
+  <string id="nl4d_mcm_wounded_min_hint" text="Yeni doğan yaralı hayatta kalanlar için minimum başlangıç sağlık oranı (varsayılan: %15)." />
+  <string id="nl4d_mcm_wounded_max" text="Başlangıç Yaralı Can Oranı Max" />
+  <string id="nl4d_mcm_wounded_max_hint" text="Yeni doğan yaralı hayatta kalanlar için maksimum başlangıç sağlık oranı (varsayılan: %20)." />
+
+  <string id="nl4d_mcm_group_debug" text="Hata Ayıklama" />
+  <string id="nl4d_mcm_debug_force_spawn" text="Zorla Hayatta Kalan Çıkart (Debug)" />
+  <string id="nl4d_mcm_debug_force_spawn_hint" text="Boyut veya olasılığa bakılmaksızın HERHANGİ bir geçerli savaştan sonra hayatta kalan çıkmaya zorlar." />
+
+  <!-- Services & UI -->
+  <string id="nl4d_companion_limit_reached" text="Daha fazla yoldaş alamazsınız ({CURRENT}/{LIMIT})." />
+
+  <!-- Survivor Template Names -->
+  <string id="nl4d_survivor_empire_name" text="İmparatorluk Hayatta Kalanı" />
+  <string id="nl4d_survivor_vlandia_name" text="Vlandiyalı Hayatta Kalan" />
+  <string id="nl4d_survivor_sturgia_name" text="Sturgiyalı Hayatta Kalan" />
+  <string id="nl4d_survivor_battania_name" text="Battanyalı Hayatta Kalan" />
+  <string id="nl4d_survivor_aserai_name" text="Aserai Hayatta Kalanı" />
+  <string id="nl4d_survivor_khuzait_name" text="Kuzait Hayatta Kalanı" />
+
+  <!-- Wave 2 Rescue Dialogue (Multi-variant count / 1..N) -->
+  <string id="nl4d_rescue_defeated_lord_count" text="3" />
+  <string id="nl4d_rescue_defeated_lord_1" text="{SURVIVOR_LORD_NAME}'ın sadık bir hizmetkarıydım. {ENEMY_FACTION_NAME} güçleri üzerimize çöktüğünde beni arama zahmetine bile girmeden yaralı bir şekilde burada bıraktı. {HOURS_SINCE_BATTLE} saattir bu cesetlerin arasında ölmeyi bekliyordum." />
+  <string id="nl4d_rescue_defeated_lord_2" text="Efendimiz {SURVIVOR_LORD_NAME} bize hattı tutmamızı emretti, ancak kanatlar yarıldığı anda kaçtı. {ENEMY_FACTION_NAME} hepimizi kılıçtan geçirdi. Sadece ceset yığınlarının arasında ölü taklidi yaparak hayatta kalabildim." />
+  <string id="nl4d_rescue_defeated_lord_3" text="Bozgun tamdı. {SURVIVOR_LORD_NAME} kendi canını kurtarmak için artçıları yüz üstü bıraktı ve {ENEMY_FACTION_NAME} ordumuzu paramparça etti. Parçalanmış kalkanımla {HOURS_SINCE_BATTLE} saattir burada mahsur durumdayım." />
+
+  <string id="nl4d_rescue_winner_lord_count" text="3" />
+  <string id="nl4d_rescue_winner_lord_1" text="Zafer kazanılmış olsa bile, {SURVIVOR_LORD_NAME}'ın ordusu takip sırasında çok hızlı hareket etti ve yaralıları çamurlar içinde geride bıraktı. Savaş bittiğinden beri kilometrelerce yol süründüm." />
+  <string id="nl4d_rescue_winner_lord_2" text="Meydanı kazandık ancak {SURVIVOR_LORD_NAME} ganimet peşinde koşmaktan birliğimizdeki yaralıları tamamen unuttu. O günden beri burada mahsurum." />
+  <string id="nl4d_rescue_winner_lord_3" text="Zafer kutlamaları kilometrelerce ötede başlarken ben ölen atımın altında sıkışıp kalmıştım. {SURVIVOR_LORD_NAME}'ın öncü birlikleri hayatta kalanları aramak için zahmet bile etmedi." />
+
+  <string id="nl4d_rescue_naval_lord_count" text="2" />
+  <string id="nl4d_rescue_naval_lord_1" text="Düşman gemileri çarptığında nakliye gemimiz un ufak oldu. Saatlerce dondurucu dalgaların arasında sürüklendikten sonra kırık bir direğe tutunarak karaya vurdum." />
+  <string id="nl4d_rescue_naval_lord_2" text="Deniz savaşı tam bir kan gölüydü. Kadırgamız batarken boğulan adamlar beni de dibe çekiyordu, zorlukla bu kayalık kıyılara tırmanabildim." />
+
+  <string id="nl4d_rescue_plea" text="Beni tam vaktinde buldunuz. Düşenleri geride bırakan lordlar gözümde {SURVIVOR_RELATION} bağını çoktan yitirdi. Beni yanınıza alın, kılıcım emrinizdedir." />
+  <string id="nl4d_rescue_accept" text="Kabul. Kalk ve bölüğüme katil." />
+  <string id="nl4d_rescue_decline" text="En yakın kasabaya kendi başına gitmelisin." />
+  <string id="nl4d_rescue_accepted_reply" text="Teşekkür ederim komutanım. Sancağınız altında savaşmaya devam edeceğim." />
+  <string id="nl4d_rescue_declined_reply" text="Nasıl isterseniz... Yaya olarak {TARGET_TOWN_NAME}'a gitmeye çalışacağım." />
+
+  <!-- Wave 2 Tavern Reunion Dialogue -->
+  <string id="nl4d_reunion_greeting" text="Beni ölümün ağzından nasıl çıkardığınızı hala unutmadım, ve asla unutmayacağım efendim. Ekibinize katılmayı hala canıgönülden istiyorum." />
+  <string id="nl4d_reunion_accept" text="Kesinlikle, seninle çok iyi işler başaracağız. Benimle gel." />
+  <string id="nl4d_reunion_decline" text="Maalesef senin için bir yerim hala yok." />
+  <string id="nl4d_reunion_accepted_reply" text="Şeref duydum efendim! Haydi yürüyelim." />
+  <string id="nl4d_reunion_declined_reply" text="Anlaşıldı. Siz ihtiyaç duyana kadar burada han köşesinde bekleyeceğim." />
+
+  <!-- Notifications & Names -->
+  <string id="nl4d_name_with_epithet" text="{FIRST_NAME} {EPITHET}" />
+  <string id="nl4d_test_wreckage_name" text="Savaş Kalıntısı ({ATTACKER} vs {DEFENDER})" />
+  <string id="nl4d_msg_survivor_found" text="Enkazın ve düşen askerlerin arasında hafif bir inilti duyuyorsunuz... Hayatta kalan biri yaşama tutunuyor!" />
+  <string id="nl4d_msg_survivor_recruited" text="{HERO_NAME} sadık bir yoldaş olarak birliğinize katıldı." />
+  <string id="nl4d_msg_survivor_sent_town" text="{HERO_NAME}, {TARGET_TOWN_NAME} şehrine ulaştırıldı. Onu yerel handa bulabilirsiniz." />
+  <string id="nl4d_msg_survivor_evicted" text="{SURVIVOR_NAME}, eylemsizlik veya dünya havuz sınırı nedeniyle hizmetinizden ayrıldı." />
+</strings>
