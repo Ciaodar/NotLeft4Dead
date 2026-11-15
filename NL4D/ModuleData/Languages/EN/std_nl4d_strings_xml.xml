@@ -60,7 +60,7 @@
   <string id="nl4d_rescue_naval_lord_1" text="Our transport ship splintered into matchwood when the enemy rams struck. I washed ashore clinging to a broken spar after hours adrift in the freezing surf." />
   <string id="nl4d_rescue_naval_lord_2" text="The naval skirmish was a bloodbath. When our galley went down, I was dragged under by the drowning men and barely clawed my way up onto these rocky shores." />
 
-  <string id="nl4d_rescue_plea" text="You found me just in time. My previous ties ({SURVIVOR_RELATION}) mean nothing to lords who leave the fallen behind. Take me with you, and I swear my blade is yours." />
+  <string id="nl4d_rescue_plea" text="You found me just in time. I will never forget this mercy (Relation +{SURVIVOR_RELATION}). Take me with you, and my blade is yours." />
   <string id="nl4d_rescue_accept" text="Agreed. Rise and join my company." />
   <string id="nl4d_rescue_decline" text="You must find your own way to the nearest town." />
   <string id="nl4d_rescue_accepted_reply" text="Thank you, captain. I live to fight another day under your banner." />

@@ -98,7 +98,10 @@ namespace NL4D.Services
             }
 
             // Step 5: Copy appearance/body properties, Skills, Attributes, Traits, and Equipment from archetype
+            hero.IsFemale = archetype.IsFemale;
             hero.StaticBodyProperties = archetype.GetBodyPropertiesMin().StaticProperties;
+            hero.Weight = archetype.GetBodyPropertiesMin().Weight;
+            hero.Build = archetype.GetBodyPropertiesMin().Build;
 
             // Skills
             if (hero.HeroDeveloper != null)

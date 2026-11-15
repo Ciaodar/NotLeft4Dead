@@ -60,8 +60,8 @@
   <string id="nl4d_rescue_naval_lord_1" text="Düşman gemileri çarptığında nakliye gemimiz un ufak oldu. Saatlerce dondurucu dalgaların arasında sürüklendikten sonra kırık bir direğe tutunarak karaya vurdum." />
   <string id="nl4d_rescue_naval_lord_2" text="Deniz savaşı tam bir kan gölüydü. Kadırgamız batarken boğulan adamlar beni de dibe çekiyordu, zorlukla bu kayalık kıyılara tırmanabildim." />
 
-  <string id="nl4d_rescue_plea" text="Beni tam vaktinde buldunuz. Düşenleri geride bırakan lordlar gözümde {SURVIVOR_RELATION} bağını çoktan yitirdi. Beni yanınıza alın, kılıcım emrinizdedir." />
-  <string id="nl4d_rescue_accept" text="Kabul. Kalk ve bölüğüme katil." />
+  <string id="nl4d_rescue_plea" text="Beni tam vaktinde buldunuz. Bu merhametinizi asla unutmayacağım (İlişki +{SURVIVOR_RELATION}). Beni yanınıza alın, kılıcım emrinizdedir." />
+  <string id="nl4d_rescue_accept" text="Kabul. Kalk ve bölüğüme katıl." />
   <string id="nl4d_rescue_decline" text="En yakın kasabaya kendi başına gitmelisin." />
   <string id="nl4d_rescue_accepted_reply" text="Teşekkür ederim komutanım. Sancağınız altında savaşmaya devam edeceğim." />
   <string id="nl4d_rescue_declined_reply" text="Nasıl isterseniz... Yaya olarak {TARGET_TOWN_NAME}'a gitmeye çalışacağım." />
