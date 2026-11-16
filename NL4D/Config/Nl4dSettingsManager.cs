@@ -28,9 +28,11 @@ namespace NL4D.Config
         public static bool UseCustomNamePool => SettingsOrDefault().UseCustomNamePool;
         public static bool DebugForceSpawn => SettingsOrDefault().DebugForceSpawn;
         public static Dictionary<string, List<string>> CultureFirstNames => SettingsOrDefault().CultureFirstNames;
+        public static Dictionary<string, List<string>> CultureFemaleFirstNames => SettingsOrDefault().CultureFemaleFirstNames;
         public static List<string> SurvivorEpithets => SettingsOrDefault().SurvivorEpithets;
 
         public static List<string> GetNamesForCulture(string? cultureId) => SettingsOrDefault().GetNamesForCulture(cultureId);
+        public static List<string> GetNamesForCulture(string? cultureId, bool isFemale) => SettingsOrDefault().GetNamesForCulture(cultureId, isFemale);
 
         public static void Initialize()
         {
@@ -108,6 +110,10 @@ namespace NL4D.Config
                             {
                                 providerModel.CultureFirstNames = diskModel.CultureFirstNames;
                             }
+                            if (providerModel.CultureFemaleFirstNames == null || providerModel.CultureFemaleFirstNames.Count == 0)
+                            {
+                                providerModel.CultureFemaleFirstNames = diskModel.CultureFemaleFirstNames;
+                            }
                             if (providerModel.SurvivorEpithets == null || providerModel.SurvivorEpithets.Count == 0)
                             {
                                 providerModel.SurvivorEpithets = diskModel.SurvivorEpithets;
@@ -128,7 +134,38 @@ namespace NL4D.Config
             }
         }
 
-        private static Nl4dJsonModel SettingsOrDefault() => _settings;
+        private static Nl4dJsonModel SettingsOrDefault()
+        {
+            if (_externalSettingsProvider != null)
+            {
+                try
+                {
+                    var providerModel = _externalSettingsProvider();
+                    if (providerModel != null)
+                    {
+                        if (providerModel.CultureFirstNames == null || providerModel.CultureFirstNames.Count == 0)
+                        {
+                            providerModel.CultureFirstNames = _settings.CultureFirstNames;
+                        }
+                        if (providerModel.CultureFemaleFirstNames == null || providerModel.CultureFemaleFirstNames.Count == 0)
+                        {
+                            providerModel.CultureFemaleFirstNames = _settings.CultureFemaleFirstNames;
+                        }
+                        if (providerModel.SurvivorEpithets == null || providerModel.SurvivorEpithets.Count == 0)
+                        {
+                            providerModel.SurvivorEpithets = _settings.SurvivorEpithets;
+                        }
+                        return providerModel;
+                    }
+                }
+                catch
+                {
+                    // Fallback to cached settings if provider fails
+                }
+            }
+
+            return _settings;
+        }
 
         private static string GetConfigPath()
         {

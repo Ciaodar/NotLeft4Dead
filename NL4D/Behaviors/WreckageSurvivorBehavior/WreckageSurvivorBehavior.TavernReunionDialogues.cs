@@ -18,6 +18,18 @@ namespace NL4D.Behaviors
         {
             AddRescueDialogues(starter);
             AddTavernReunionDialogues(starter);
+
+            // Protect all existing unrecruited survivors from Native CompanionsCampaignBehavior.TryKillCompanion
+            var unrecruited = new System.Collections.Generic.List<Hero>();
+            for (int i = 0; i < _rescuedSurvivors.Count; i++)
+            {
+                var r = _rescuedSurvivors[i];
+                if (r != null && !r.IsRecruited && r.SurvivorHero != null && r.SurvivorHero.IsAlive)
+                {
+                    unrecruited.Add(r.SurvivorHero);
+                }
+            }
+            SurvivorFactoryService.ProtectAllUnrecruitedSurvivors(unrecruited);
         }
 
         private void AddTavernReunionDialogues(CampaignGameStarter starter)

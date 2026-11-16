@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using NL4D.Calculators;
 using NL4D.Config;
 using NL4D.Data;
 using TaleWorlds.CampaignSystem;
-using TaleWorlds.CampaignSystem.CharacterDevelopment;
-using TaleWorlds.CampaignSystem.Extensions;
+using TaleWorlds.CampaignSystem.CampaignBehaviors;
 using TaleWorlds.CampaignSystem.Settlements;
 using TaleWorlds.Core;
 using TaleWorlds.Localization;
@@ -14,9 +15,9 @@ using TaleWorlds.ObjectSystem;
 namespace NL4D.Services
 {
     /// <summary>
-    /// Spawns and configures rescued survivors using the Two-Step Occupation Pattern:
-    /// Initialized with custom Occupation.Soldier template (immune to Native TryKillCompanion wanderer purge),
-    /// then enriched with Wanderer archetypal attributes, skills, equipment, and switched to Occupation.Wanderer.
+    /// Spawns and configures rescued survivors directly from Native Wanderer archetypes.
+    /// Preserves natural facial features, hair, beards, and correct gender mesh/proportions,
+    /// while detaching survivors from Native CompanionsCampaignBehavior.TryKillCompanion.
     /// </summary>
     public static class SurvivorFactoryService
     {
@@ -27,35 +28,16 @@ namespace NL4D.Services
                 return null;
             }
 
-            // Step 1: Look up custom Occupation.Soldier template (immune to TryKillCompanion)
-            CharacterObject? baseSoldierTemplate = MBObjectManager.Instance.GetObject<CharacterObject>("nl4d_survivor_" + context.Culture.StringId);
-            if (baseSoldierTemplate == null)
-            {
-                baseSoldierTemplate = MBObjectManager.Instance.GetObject<CharacterObject>("nl4d_survivor_empire");
-            }
+            // Step 1: Query Native Occupation.Wanderer archetype templates matching context culture
+            var wandererCandidates = CharacterObject.All
+                .Where(c => c.IsTemplate && c.Occupation == Occupation.Wanderer && c.Culture == context.Culture)
+                .ToList();
 
-            if (baseSoldierTemplate == null)
-            {
-                baseSoldierTemplate = CharacterObject.All.FirstOrDefault(c => c.IsTemplate && c.StringId.StartsWith("nl4d_survivor_"));
-            }
-
-            if (baseSoldierTemplate == null)
-            {
-                baseSoldierTemplate = CharacterObject.All.FirstOrDefault(c => c.IsTemplate && c.Culture == context.Culture && c.Occupation != Occupation.Wanderer)
-                    ?? CharacterObject.All.FirstOrDefault(c => c.IsTemplate && c.Culture == context.Culture)
-                    ?? CharacterObject.All.FirstOrDefault(c => c.IsTemplate);
-            }
-
-            if (baseSoldierTemplate == null)
-            {
-                return null;
-            }
-
-            // Step 2: Find matching culture Native Occupation.Wanderer template for archetypal skills/gear
-            var wandererCandidates = CharacterObject.All.Where(c => c.IsTemplate && c.Occupation == Occupation.Wanderer && c.Culture == context.Culture).ToList();
             if (wandererCandidates.Count == 0)
             {
-                wandererCandidates = CharacterObject.All.Where(c => c.IsTemplate && c.Occupation == Occupation.Wanderer).ToList();
+                wandererCandidates = CharacterObject.All
+                    .Where(c => c.IsTemplate && c.Occupation == Occupation.Wanderer)
+                    .ToList();
             }
 
             if (wandererCandidates.Count == 0)
@@ -68,9 +50,25 @@ namespace NL4D.Services
                 return null;
             }
 
-            CharacterObject archetype = wandererCandidates[MBRandom.RandomInt(wandererCandidates.Count)];
+            // Prefer an archetype template not currently active among alive wanderers in Calradia
+            HashSet<CharacterObject> usedTemplates;
+            try
+            {
+                usedTemplates = new HashSet<CharacterObject>(
+                    Hero.AllAliveHeroes.Where(h => h.IsWanderer && h.Template != null).Select(h => h.Template)
+                );
+            }
+            catch
+            {
+                usedTemplates = new HashSet<CharacterObject>();
+            }
 
-            // Step 3: Find nearest settlement of that culture (or nearest town to wreckage) for bornSettlement
+            var unusedCandidates = wandererCandidates.Where(c => !usedTemplates.Contains(c)).ToList();
+            CharacterObject archetype = unusedCandidates.Count > 0
+                ? unusedCandidates[MBRandom.RandomInt(unusedCandidates.Count)]
+                : wandererCandidates[MBRandom.RandomInt(wandererCandidates.Count)];
+
+            // Step 2: Find nearest settlement of that culture (or nearest town to wreckage) for bornSettlement
             Settlement? bornSettlement = Settlement.All
                 .Where(s => s.IsTown && s.Culture == context.Culture)
                 .OrderBy(s => context.Position.Distance(s.GatePosition))
@@ -89,97 +87,42 @@ namespace NL4D.Services
                 bornSettlement = Settlement.All.FirstOrDefault();
             }
 
-            // Step 4: Call HeroCreator.CreateSpecialHero with base soldier template
+            // Step 3: Spawn hero passing archetype directly into HeroCreator.CreateSpecialHero.
+            // Native automatically generates natural, varied body properties (hair, beard, skin, face tags),
+            // matching 3D gender mesh, and proper skills, traits, and equipment directly from archetype.
             int age = Campaign.Current.Models.AgeModel.HeroComesOfAge + 6 + MBRandom.RandomInt(14);
-            Hero hero = HeroCreator.CreateSpecialHero(baseSoldierTemplate, bornSettlement, null, null, age);
+            Hero hero = HeroCreator.CreateSpecialHero(archetype, bornSettlement, null, null, age);
             if (hero == null)
             {
                 return null;
             }
 
-            // Step 5: Copy appearance/body properties, Skills, Attributes, Traits, and Equipment from archetype
-            hero.IsFemale = archetype.IsFemale;
-            hero.StaticBodyProperties = archetype.GetBodyPropertiesMin().StaticProperties;
-            hero.Weight = archetype.GetBodyPropertiesMin().Weight;
-            hero.Build = archetype.GetBodyPropertiesMin().Build;
-
-            // Skills
-            if (hero.HeroDeveloper != null)
-            {
-                foreach (SkillObject skill in Skills.All)
-                {
-                    int skillVal = archetype.GetSkillValue(skill);
-                    if (skillVal > 0)
-                    {
-                        hero.HeroDeveloper.SetInitialSkillLevel(skill, skillVal);
-                    }
-                }
-
-                // Attributes (from archetype HeroObject if available, otherwise developer will calculate)
-                if (archetype.HeroObject != null)
-                {
-                    foreach (CharacterAttribute attr in Attributes.All)
-                    {
-                        int attrVal = archetype.HeroObject.GetAttributeValue(attr);
-                        if (attrVal > 0)
-                        {
-                            hero.HeroDeveloper.AddAttribute(attr, attrVal, checkUnspentPoints: false);
-                        }
-                    }
-                }
-
-                hero.HeroDeveloper.InitializeHeroDeveloper(developCharacterStats: true);
-            }
-
-            // Traits
-            foreach (TraitObject trait in TraitObject.All)
-            {
-                int traitVal = archetype.GetTraitLevel(trait);
-                if (traitVal != 0)
-                {
-                    hero.SetTraitLevel(trait, traitVal);
-                }
-            }
-
-            // Equipment (Battle & Civilian)
-            if (archetype.FirstBattleEquipment != null)
-            {
-                for (EquipmentIndex i = EquipmentIndex.WeaponItemBeginSlot; i < EquipmentIndex.NumEquipmentSetSlots; i++)
-                {
-                    hero.BattleEquipment[i] = archetype.FirstBattleEquipment[i];
-                }
-            }
-
-            if (archetype.FirstCivilianEquipment != null)
-            {
-                for (EquipmentIndex i = EquipmentIndex.WeaponItemBeginSlot; i < EquipmentIndex.NumEquipmentSetSlots; i++)
-                {
-                    hero.CivilianEquipment[i] = archetype.FirstCivilianEquipment[i];
-                }
-            }
-
+            // Step 4: Apply companion equipment modifiers (companion_armor, companion_weapon, companion_horse)
             AdjustEquipmentModifiers(hero.BattleEquipment);
             AdjustEquipmentModifiers(hero.CivilianEquipment);
 
-            // Step 6: Set Occupation to Wanderer and set State to Active
+            // Step 5: Ensure hero state is Active and Occupation is Wanderer
             hero.SetNewOccupation(Occupation.Wanderer);
             hero.ChangeState(Hero.CharacterStates.Active);
 
-            // Step 7: Generate custom name via SurvivorNameCalculator and set on hero
+            // Step 6: Generate custom name matching hero's generated gender (male or female)
             var (fullName, firstName) = SurvivorNameCalculator.GenerateName(context.Culture, hero.IsFemale);
             hero.SetName(fullName, firstName);
 
-            // Step 8: Set wounded HP ratio
+            // Step 7: Set wounded HP ratio
             float hpRatio = MBRandom.RandomFloatRanged(Nl4dSettingsManager.InitialWoundedHpRatioMin, Nl4dSettingsManager.InitialWoundedHpRatioMax);
             hpRatio = Math.Max(0.05f, Math.Min(1.0f, hpRatio));
             hero.HitPoints = Math.Max(1, TaleWorlds.Library.MathF.Round(hero.MaxHitPoints * hpRatio));
 
-            // Step 9: Set personal relation with player
+            // Step 8: Set personal relation with player
             int relationBonus = Math.Max(-100, Math.Min(100, Nl4dSettingsManager.SurvivorRelationBonus));
             if (Hero.MainHero != null)
             {
                 Hero.MainHero.SetPersonalRelation(hero, relationBonus);
             }
+
+            // Step 9: Detach survivor from Native CompanionsCampaignBehavior.TryKillCompanion
+            DetachFromNativeCompanionKiller(hero, archetype);
 
             // Step 10: Build and return record
             string formerLeaderName = context.FormerLeaderHero?.Name?.ToString()
@@ -202,6 +145,73 @@ namespace NL4D.Services
             );
 
             return (hero, record);
+        }
+
+        /// <summary>
+        /// Protects the created survivor from Native CompanionsCampaignBehavior.TryKillCompanion
+        /// by removing the template from _aliveCompanionTemplates if no other active unrecruited wanderer uses it.
+        /// </summary>
+        public static void DetachFromNativeCompanionKiller(Hero hero, CharacterObject archetype)
+        {
+            try
+            {
+                var compBehavior = Campaign.Current?.GetCampaignBehavior<CompanionsCampaignBehavior>();
+                if (compBehavior != null)
+                {
+                    var field = typeof(CompanionsCampaignBehavior).GetField("_aliveCompanionTemplates", BindingFlags.Instance | BindingFlags.NonPublic);
+                    if (field?.GetValue(compBehavior) is HashSet<CharacterObject> templates)
+                    {
+                        bool otherUses = Hero.AllAliveHeroes.Any(h => h != hero && h.IsWanderer && h.CompanionOf == null && h.Template == archetype);
+                        if (!otherUses)
+                        {
+                            templates.Remove(archetype);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                // Non-intrusive failover
+            }
+        }
+
+        /// <summary>
+        /// Batch-protects all tracked unrecruited survivors against Native purge logic.
+        /// Can be called on game loaded and session launched events.
+        /// </summary>
+        public static void ProtectAllUnrecruitedSurvivors(IEnumerable<Hero>? unrecruitedHeroes)
+        {
+            if (unrecruitedHeroes == null)
+            {
+                return;
+            }
+
+            try
+            {
+                var compBehavior = Campaign.Current?.GetCampaignBehavior<CompanionsCampaignBehavior>();
+                if (compBehavior != null)
+                {
+                    var field = typeof(CompanionsCampaignBehavior).GetField("_aliveCompanionTemplates", BindingFlags.Instance | BindingFlags.NonPublic);
+                    if (field?.GetValue(compBehavior) is HashSet<CharacterObject> templates)
+                    {
+                        foreach (var hero in unrecruitedHeroes)
+                        {
+                            if (hero != null && hero.IsAlive && hero.Template != null)
+                            {
+                                bool otherUses = Hero.AllAliveHeroes.Any(h => h != hero && h.IsWanderer && h.CompanionOf == null && h.Template == hero.Template);
+                                if (!otherUses)
+                                {
+                                    templates.Remove(hero.Template);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                // Non-intrusive failover
+            }
         }
 
         private static void AdjustEquipmentModifiers(Equipment? equipment)
@@ -237,4 +247,3 @@ namespace NL4D.Services
         }
     }
 }
-

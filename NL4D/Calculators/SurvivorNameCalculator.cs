@@ -20,10 +20,10 @@ namespace NL4D.Calculators
 
             if (Nl4dSettingsManager.UseCustomNamePool)
             {
-                var candidateNames = Nl4dSettingsManager.GetNamesForCulture(culture?.StringId);
+                var candidateNames = Nl4dSettingsManager.GetNamesForCulture(culture?.StringId, isFemale);
                 if (candidateNames == null || candidateNames.Count == 0)
                 {
-                    candidateNames = Nl4dSettingsManager.GetNamesForCulture("default");
+                    candidateNames = Nl4dSettingsManager.GetNamesForCulture("default", isFemale);
                 }
 
                 // Check alive heroes to avoid duplicate names in Calradia if possible

@@ -25,6 +25,13 @@ namespace NL4D.Config
             set => _cultureFirstNames = value ?? CreateDefaultCultureNames();
         }
 
+        private Dictionary<string, List<string>>? _cultureFemaleFirstNames;
+        public Dictionary<string, List<string>> CultureFemaleFirstNames
+        {
+            get => _cultureFemaleFirstNames ??= CreateDefaultCultureFemaleNames();
+            set => _cultureFemaleFirstNames = value ?? CreateDefaultCultureFemaleNames();
+        }
+
         private List<string>? _survivorEpithets;
         public List<string> SurvivorEpithets
         {
@@ -34,7 +41,12 @@ namespace NL4D.Config
 
         public List<string> GetNamesForCulture(string? cultureId)
         {
-            var dict = CultureFirstNames;
+            return GetNamesForCulture(cultureId, false);
+        }
+
+        public List<string> GetNamesForCulture(string? cultureId, bool isFemale)
+        {
+            var dict = isFemale ? CultureFemaleFirstNames : CultureFirstNames;
             if (!string.IsNullOrWhiteSpace(cultureId))
             {
                 var lowerCulture = cultureId!.ToLowerInvariant();
@@ -49,7 +61,7 @@ namespace NL4D.Config
                 return defaultList;
             }
 
-            var fallback = CreateDefaultCultureNames();
+            var fallback = isFemale ? CreateDefaultCultureFemaleNames() : CreateDefaultCultureNames();
             if (!string.IsNullOrWhiteSpace(cultureId) && fallback.TryGetValue(cultureId!.ToLowerInvariant(), out var fbList) && fbList != null && fbList.Count > 0)
             {
                 return fbList;
@@ -64,51 +76,106 @@ namespace NL4D.Config
             {
                 ["empire"] = new List<string>
                 {
-                    "Valerios", "Lucia", "Cassian", "Helena", "Tiberios",
-                    "Theodora", "Justinian", "Antonia", "Maron", "Phocas",
-                    "Zoe", "Constantia", "Demetrios", "Irene", "Leontios", "Sophia"
+                    "Valerios", "Cassian", "Tiberios", "Justinian", "Maron",
+                    "Phocas", "Demetrios", "Leontios", "Alexios", "Konstantinos",
+                    "Niketas", "Basileios", "Menander", "Theophilos"
                 },
                 ["vlandia"] = new List<string>
                 {
-                    "Almaric", "Berengar", "Elys", "Godfrey", "Gisela",
-                    "Hildegard", "Roland", "Morcar", "Adelaide", "Baldwin",
-                    "Yvaine", "Guibert", "Odo", "Mathilda", "Garnier", "Beatrice"
+                    "Almaric", "Berengar", "Godfrey", "Roland", "Morcar",
+                    "Baldwin", "Guibert", "Odo", "Garnier", "Arnaud",
+                    "Bertrand", "Amaury", "Geoffrey", "Hervieu"
                 },
                 ["sturgia"] = new List<string>
                 {
-                    "Branimir", "Militsa", "Viglaf", "Radomir", "Svetlana",
-                    "Oleg", "Yaropolk", "Danica", "Borislav", "Rada",
-                    "Vsevolod", "Zoritsa", "Kasyan", "Mila", "Dobrynya", "Yadviga"
+                    "Branimir", "Viglaf", "Radomir", "Oleg", "Yaropolk",
+                    "Borislav", "Vsevolod", "Kasyan", "Dobrynya", "Svyatoslav",
+                    "Mstislav", "Rurik", "Stanislav", "Volodar"
                 },
                 ["battania"] = new List<string>
                 {
-                    "Bran", "Morrigan", "Cormac", "Eileen", "Breccan",
-                    "Maeve", "Fingal", "Sorcha", "Cynan", "Rhiannon",
-                    "Alpin", "Nesta", "Torcall", "Brid", "Cathal", "Fionnuala"
+                    "Bran", "Cormac", "Breccan", "Fingal", "Cynan",
+                    "Alpin", "Torcall", "Cathal", "Morid", "Domhnall",
+                    "Calgacus", "Kaelen", "Fergus", "Eogan"
                 },
                 ["aserai"] = new List<string>
                 {
-                    "Tariq", "Yasmin", "Qasim", "Farah", "Nizar",
-                    "Safiya", "Hamza", "Zainab", "Ghassan", "Layla",
-                    "Bashir", "Samira", "Khalid", "Halima", "Munir", "Asma"
+                    "Tariq", "Qasim", "Nizar", "Hamza", "Ghassan",
+                    "Bashir", "Khalid", "Munir", "Suleiman", "Jafar",
+                    "Rashid", "Fahd", "Karim", "Ziyad"
                 },
                 ["khuzait"] = new List<string>
                 {
-                    "Barlas", "Altun", "Temur", "Chagatai", "Sorghag",
-                    "Kadan", "Yulbars", "Alghu", "Yesui", "Qutlugh",
-                    "Batu", "Toghrul", "Arslan", "Sarangerel", "Mengu", "Khulan"
+                    "Barlas", "Temur", "Chagatai", "Kadan", "Yulbars",
+                    "Alghu", "Qutlugh", "Batu", "Toghrul", "Arslan",
+                    "Mengu", "Khorchi", "Subutai", "Jochi"
                 },
                 ["nord"] = new List<string>
                 {
-                    "Torstein", "Signy", "Halvar", "Aslog", "Eirik",
-                    "Gunnvor", "Ragnvald", "Thora", "Brand", "Yngvild",
-                    "Snorri", "Kari", "Hafgrim", "Brynhild", "Sigurd", "Gudrun"
+                    "Torstein", "Halvar", "Eirik", "Ragnvald", "Brand",
+                    "Snorri", "Hafgrim", "Sigurd", "Hakon", "Gunnar",
+                    "Olaf", "Leif", "Bjorn", "Sten"
                 },
                 ["default"] = new List<string>
                 {
-                    "Duncan", "Kendra", "Gareth", "Rowena", "Alden",
-                    "Brina", "Jarek", "Vesper", "Torin", "Sylva",
-                    "Marek", "Astrid", "Corin", "Lyra", "Eldred", "Morna"
+                    "Duncan", "Gareth", "Alden", "Jarek", "Torin",
+                    "Marek", "Corin", "Eldred", "Bram", "Garrick",
+                    "Lachlan", "Lucan", "Gavin", "Rowan"
+                }
+            };
+        }
+
+        public static Dictionary<string, List<string>> CreateDefaultCultureFemaleNames()
+        {
+            return new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase)
+            {
+                ["empire"] = new List<string>
+                {
+                    "Lucia", "Helena", "Theodora", "Antonia", "Zoe",
+                    "Constantia", "Irene", "Sophia", "Anna", "Eudokia",
+                    "Pulcheria", "Agatha", "Theophano", "Kassiani"
+                },
+                ["vlandia"] = new List<string>
+                {
+                    "Elys", "Gisela", "Hildegard", "Adelaide", "Yvaine",
+                    "Mathilda", "Beatrice", "Alienor", "Blanche", "Isolda",
+                    "Gwenllian", "Margot", "Sibylla", "Eleanor"
+                },
+                ["sturgia"] = new List<string>
+                {
+                    "Militsa", "Svetlana", "Danica", "Rada", "Zoritsa",
+                    "Mila", "Yadviga", "Olga", "Lyudmila", "Lada",
+                    "Vesna", "Yaroslava", "Bogdana", "Daryna"
+                },
+                ["battania"] = new List<string>
+                {
+                    "Morrigan", "Eileen", "Maeve", "Sorcha", "Rhiannon",
+                    "Nesta", "Brid", "Fionnuala", "Gweneth", "Kiera",
+                    "Aoife", "Bronwen", "Deirdre", "Siobhan"
+                },
+                ["aserai"] = new List<string>
+                {
+                    "Yasmin", "Farah", "Safiya", "Zainab", "Layla",
+                    "Samira", "Halima", "Asma", "Rania", "Salma",
+                    "Fatima", "Noor", "Amina", "Huda"
+                },
+                ["khuzait"] = new List<string>
+                {
+                    "Altun", "Sorghag", "Yesui", "Sarangerel", "Khulan",
+                    "Chabi", "Borte", "Qutlun", "Toghon", "Temulun",
+                    "Altan", "Ebegei", "Yisun", "Gurbesu"
+                },
+                ["nord"] = new List<string>
+                {
+                    "Signy", "Aslog", "Gunnvor", "Thora", "Yngvild",
+                    "Kari", "Brynhild", "Gudrun", "Astrid", "Freydis",
+                    "Ingrid", "Helga", "Sigrid", "Rannveig"
+                },
+                ["default"] = new List<string>
+                {
+                    "Kendra", "Rowena", "Brina", "Vesper", "Sylva",
+                    "Astrid", "Lyra", "Morna", "Elspeth", "Linnea",
+                    "Carys", "Seraphina", "Isla", "Faye"
                 }
             };
         }

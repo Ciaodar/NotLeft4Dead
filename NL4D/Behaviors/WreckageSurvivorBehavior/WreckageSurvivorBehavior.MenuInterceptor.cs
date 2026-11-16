@@ -30,13 +30,13 @@ namespace NL4D.Behaviors
                 return;
             }
 
-            if (menuId == "battle_wreckage")
+            if (menuId == "battle_wreckage" || menuId == "battle_wreckage_investigate_wait_menu")
             {
                 _activeWreckage = MobileParty.MainParty?.Ai?.AiBehaviorInteractable as BattleWreckage
                     ?? GetEncounteredWreckageFromNativeBehavior()
                     ?? FindClosestWreckage(MobileParty.MainParty?.Position ?? CampaignVec2.Zero, 15f);
             }
-            else if (menuId == "battle_wreckage_results_menu")
+            else if (menuId == "battle_wreckage_recover_troops_decision" || menuId == "battle_wreckage_results_connection_menu" || menuId == "battle_wreckage_results_menu")
             {
                 if (!Nl4dSettingsManager.ModEnabled)
                 {
@@ -97,8 +97,8 @@ namespace NL4D.Behaviors
                 var msg = new TextObject("{=nl4d_msg_survivor_found}Among the debris and fallen soldiers, you hear a faint groan... A survivor clings to life!");
                 InformationManager.DisplayMessage(new InformationMessage(msg.ToString(), Colors.Yellow));
 
-                // Defer conversation opening to single-tick TickEvent so results menu finishes setup cleanly
-                _awaitingConversationLaunchOnTick = true;
+                // Arm conversation launch on next UI frame via Game.Current.AfterTick
+                ArmConversationLaunchOnNextFrame();
             }
         }
 

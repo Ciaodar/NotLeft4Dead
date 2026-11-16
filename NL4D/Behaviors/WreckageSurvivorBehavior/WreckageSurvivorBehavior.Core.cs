@@ -41,7 +41,6 @@ namespace NL4D.Behaviors
             CampaignEvents.GameMenuOpened.AddNonSerializedListener(this, OnGameMenuOpened);
             CampaignEvents.OnSessionLaunchedEvent.AddNonSerializedListener(this, OnSessionLaunched);
             CampaignEvents.ConversationEnded.AddNonSerializedListener(this, OnConversationEnded);
-            CampaignEvents.TickEvent.AddNonSerializedListener(this, OnTick);
         }
 
         public override void SyncData(IDataStore dataStore)
@@ -62,11 +61,36 @@ namespace NL4D.Behaviors
             }
         }
 
-        private void OnTick(float dt)
+        private void ArmConversationLaunchOnNextFrame()
         {
-            if (_awaitingConversationLaunchOnTick)
+            _awaitingConversationLaunchOnTick = true;
+            if (Game.Current != null)
+            {
+                Game.Current.AfterTick -= OnGameAfterTick;
+                Game.Current.AfterTick += OnGameAfterTick;
+            }
+        }
+
+        private void OnGameAfterTick(float dt)
+        {
+            if (!_awaitingConversationLaunchOnTick)
+            {
+                if (Game.Current != null)
+                {
+                    Game.Current.AfterTick -= OnGameAfterTick;
+                }
+                return;
+            }
+
+            if (GameStateManager.Current?.ActiveState is TaleWorlds.CampaignSystem.GameState.MapState
+                && Campaign.Current?.ConversationManager != null
+                && !Campaign.Current.ConversationManager.IsConversationInProgress)
             {
                 _awaitingConversationLaunchOnTick = false;
+                if (Game.Current != null)
+                {
+                    Game.Current.AfterTick -= OnGameAfterTick;
+                }
                 LaunchRescueConversation();
             }
         }
@@ -111,6 +135,10 @@ namespace NL4D.Behaviors
 
         private void ClearPendingState()
         {
+            if (Game.Current != null)
+            {
+                Game.Current.AfterTick -= OnGameAfterTick;
+            }
             _activeWreckage = null;
             _pendingRescueHero = null;
             _pendingRescueRecord = null;
