@@ -103,7 +103,7 @@ namespace NL4D.Behaviors
                 "nl4d_rescue_plea_line",
                 "nl4d_rescue_plea_token",
                 "nl4d_rescue_hub_token",
-                "{=nl4d_rescue_plea}You found me just in time. I will never forget this mercy (Relation +{SURVIVOR_RELATION}). Take me with you, and my blade is yours.",
+                "{=!}{NL4D_RESCUE_PLEA}",
                 null,
                 null,
                 100
@@ -256,6 +256,11 @@ namespace NL4D.Behaviors
                     "nl4d_rescue_defeated_lord",
                     "Our line broke under {ENEMY_LORD_NAME}'s charge... {SURVIVOR_LORD_NAME} was routed, and {ENEMY_FACTION_NAME}'s men butchered anyone who could not flee. I lay buried beneath the corpses for {HOURS_SINCE_BATTLE} hours.");
             }
+
+            StringCalculator.SetDialogVariable(
+                "NL4D_RESCUE_PLEA",
+                "nl4d_rescue_plea",
+                "You found me just in time. I will never forget this mercy (Relation +{SURVIVOR_RELATION}). Take me with you, and my blade is yours.");
         }
 
         private void OnAskBattleLoreConsequence()
@@ -292,6 +297,10 @@ namespace NL4D.Behaviors
             string fallback = "A spear grazed my ribs and a bolt took me in the shoulder. The blood loss nearly took me, but the bleeding has stopped. With a few days of bread and rest, I will be fit to fight again.";
 
             StringCalculator.SetDialogVariable("NL4D_RESCUE_WOUNDS_LORE", "nl4d_rescue_wounds_lore", fallback);
+            StringCalculator.SetDialogVariable(
+                "NL4D_RESCUE_PLEA",
+                "nl4d_rescue_plea",
+                "You found me just in time. I will never forget this mercy (Relation +{SURVIVOR_RELATION}). Take me with you, and my blade is yours.");
         }
 
         private bool OnRescueRecruitClickableCondition(out TextObject explanation)

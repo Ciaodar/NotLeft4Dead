@@ -145,14 +145,13 @@ jobs:
         env:
           NEXUS_API_KEY: ${{ secrets.NEXUSMODS_API_KEY || secrets.NEXUS_API_KEY || secrets.NEXUSMODS_APIKEY }}
         run: |
-          $modId = "${{ vars.NEXUSMODS_MOD_ID || '' }}"
+          $modId = "${{ vars.NEXUSMODS_MOD_ID || '14737' }}"
           $apiKey = $env:NEXUS_API_KEY
-          $fallbackFileId = "${{ vars.NEXUSMODS_FILE_ID || '' }}"
+          $fallbackFileId = "${{ vars.NEXUSMODS_FILE_ID || '8400354' }}"
           
-          if ([string]::IsNullOrWhiteSpace($apiKey) -or [string]::IsNullOrWhiteSpace($modId)) {
-            Write-Warning "Nexus Mods credentials or mod ID not configured. Skipping Nexus upload."
-            "skip_nexus=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-            exit 0
+          if ([string]::IsNullOrWhiteSpace($apiKey)) {
+            Write-Error "CRITICAL: NEXUSMODS_API_KEY secret is not set or empty in GitHub repository settings!"
+            exit 1
           }
 
           try {
@@ -162,20 +161,17 @@ jobs:
             "mod_uid=$uid" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
             $filesRes = Invoke-RestMethod -Uri "https://api.nexusmods.com/v3/mods/$uid/files" -Headers @{ "apikey" = $apiKey; "Accept" = "application/json" }
-            $activeFile = $filesRes.data.mod_files | Where-Object { $_.id -eq $fallbackFileId -or ($_.name -like '*Latest*' -and $_.is_active) } | Select-Object -First 1
+            $activeFile = $filesRes.data.mod_files | Where-Object { $_.id -eq $fallbackFileId -or (($_.name -like '*Latest*' -or $_.name -eq 'NL4D') -and $_.is_active) } | Select-Object -First 1
             $fileGroupId = if ($activeFile) { $activeFile.id } else { $fallbackFileId }
             Write-Host "Resolved Nexus Mods FileGroupId: $fileGroupId ($($activeFile.name))"
             "file_group_id=$fileGroupId" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-            "skip_nexus=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           } catch {
             Write-Warning "Resolution failed: $_. Using fallbacks: UID=$modId, FileGroupId=$fallbackFileId"
             "mod_uid=$modId" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
             "file_group_id=$fallbackFileId" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-            "skip_nexus=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           }
 
       - name: Upload to Nexus Mods
-        if: steps.nexus_info.outputs.skip_nexus != 'true'
         uses: Nexus-Mods/upload-action@v1.0.0-beta.11
         with:
           api_key: ${{ secrets.NEXUSMODS_API_KEY || secrets.NEXUS_API_KEY || secrets.NEXUSMODS_APIKEY }}

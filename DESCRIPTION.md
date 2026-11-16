@@ -24,6 +24,8 @@ When you finish scavenging a land or naval battle wreckage, a wounded survivor c
   - [i]"What actually happened here? Tell me of the battle."[/i]
   - [i]"Who are you really? What is your story?"[/i]
   - [i]"What happened to you? How bad are your wounds?"[/i]
+[*][b]🎭 70+ Dynamic Dialogue Variations & Emotional States:[/b] Survivors react with distinct psychological states including near-death angel hallucinations, bitter fury, broken morale, dark humor, survivor guilt, and shell-shock. Every inquiry reveals unique reactions based on battle outcome, casualties, and trauma.
+[*][b]📜 12 Unique Character Background Stories:[/b] Every survivor carries a distinct past (blacksmith apprentice, border scout, caravan guard, pit-fighter, disgraced noble, siege sapper, battlefield surgeon's helper, reformed highwayman, standard-bearer, and more).
 [*][b]📖 Custom Encyclopedia Biography & Met Status:[/b] Rescued survivors are automatically marked as met ([i]HasMet[/i]) and receive a custom Encyclopedia biography recording who abandoned them, who they fought, and that you pulled them from the wreckage.
 [*][b]⚔️ Winner or Defeated Side, Land or Naval:[/b] Survivors can be loyal retainers abandoned in a rout [i]or[/i] wounded veterans forgotten by a victorious army rushing after loot, across both land and naval wreckages.
 [*][b]📊 Casualty-Scaled Spawn Chance:[/b] Requires at least one real NPC Lord on either side of the battle (player battles excluded). Spawn probability scales with battle casualties, reaching [b]100% at 1,500+ casualties[/b] (configurable).
