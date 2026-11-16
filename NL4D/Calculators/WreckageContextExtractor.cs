@@ -55,6 +55,7 @@ namespace NL4D.Calculators
             }
 
             Hero formerLeaderHero = selectWinner ? winningHero! : defeatedHero!;
+            Hero? enemyLeaderHero = selectWinner ? defeatedHero : winningHero;
             IFaction? formerFaction = selectWinner ? winningFaction : defeatedFaction;
             string formerPartyName = (selectWinner ? winningPartyText : defeatedPartyText)?.ToString() ?? string.Empty;
 
@@ -105,7 +106,8 @@ namespace NL4D.Calculators
                 isNavalWreckage,
                 totalCasualties,
                 hoursElapsed,
-                wreckage.Position
+                wreckage.Position,
+                enemyLeaderHero
             );
         }
     }

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<strings>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+  <tags>
+    <tag language="English" />
+  </tags>
+  <strings>
   <!-- MCM Settings -->
   <string id="nl4d_mcm_display_name" text="Not Left 4 Dead" />
   <string id="nl4d_mcm_group_general" text="General" />
@@ -45,20 +49,49 @@
   <string id="nl4d_survivor_aserai_name" text="Aserai Survivor" />
   <string id="nl4d_survivor_khuzait_name" text="Khuzait Survivor" />
 
+  <!-- Encyclopedia Biography -->
+  <string id="nl4d_survivor_encyclopedia_bio" text="{HERO_NAME} fought under the banner of {SURVIVOR_LORD_NAME} ({SURVIVOR_FACTION_NAME}) in a brutal clash against {ENEMY_LORD_NAME} ({ENEMY_FACTION_NAME}) that claimed {BATTLE_CASUALTIES} casualties. Left for dead in the wreckage, {HERO_NAME} was rescued by {PLAYER_LINK}." />
+
   <!-- Wave 2 Rescue Dialogue (Multi-variant count / 1..N) -->
   <string id="nl4d_rescue_defeated_lord_count" text="3" />
-  <string id="nl4d_rescue_defeated_lord_1" text="I was a loyal retainer of {SURVIVOR_LORD_NAME}. When the {ENEMY_FACTION_NAME} forces crashed upon us, he fled without a second thought, leaving me here bleeding among the dead. For {HOURS_SINCE_BATTLE} hours I have been lying here waiting for the vultures." />
-  <string id="nl4d_rescue_defeated_lord_2" text="My lord {SURVIVOR_LORD_NAME} ordered us to hold the line, then retreated the moment the flanks broke. The {ENEMY_FACTION_NAME} cut us down to the last man. I survived only by feigning death beneath a pile of corpses." />
-  <string id="nl4d_rescue_defeated_lord_3" text="The rout was total. {SURVIVOR_LORD_NAME} abandoned the rearguard to save his own skin, and the {ENEMY_FACTION_NAME} butchered our formation. I have been stranded here for {HOURS_SINCE_BATTLE} hours with a shattered shield." />
+  <string id="nl4d_rescue_defeated_lord_1" text="I was a loyal retainer of {SURVIVOR_LORD_NAME}. When {ENEMY_LORD_NAME}'s {ENEMY_FACTION_NAME} forces crashed upon us, he fled without a second thought, leaving me here bleeding among the dead. For {HOURS_SINCE_BATTLE} hours I have been lying here waiting for the vultures." />
+  <string id="nl4d_rescue_defeated_lord_2" text="My lord {SURVIVOR_LORD_NAME} ordered us to hold the line, but the moment {ENEMY_LORD_NAME} broke our flanks, he retreated instantly. The {ENEMY_FACTION_NAME} cut us down to the last man; I survived only by feigning death beneath a pile of corpses." />
+  <string id="nl4d_rescue_defeated_lord_3" text="The rout was a complete disaster. {SURVIVOR_LORD_NAME} sacrificed our rearguard to {ENEMY_LORD_NAME} and the {ENEMY_FACTION_NAME} host to save his own skin. I have been stranded here for {HOURS_SINCE_BATTLE} hours with a shattered shield." />
 
   <string id="nl4d_rescue_winner_lord_count" text="3" />
-  <string id="nl4d_rescue_winner_lord_1" text="Even in victory, {SURVIVOR_LORD_NAME}'s army moved too fast during the pursuit and left the wounded behind in the mud. I've crawled miles since the battle ended." />
-  <string id="nl4d_rescue_winner_lord_2" text="We won the field, but {SURVIVOR_LORD_NAME} was so eager to claim the loot that my battalion's wounded were forgotten in the chaos. I've been stranded here ever since." />
-  <string id="nl4d_rescue_winner_lord_3" text="The victory celebrations started miles away while I lay pinned beneath my dead horse. {SURVIVOR_LORD_NAME}'s vanguard didn't even bother to sweep the field for survivors." />
+  <string id="nl4d_rescue_winner_lord_1" text="Even in victory against {ENEMY_LORD_NAME}'s {ENEMY_FACTION_NAME} army, {SURVIVOR_LORD_NAME}'s forces moved too fast during the pursuit and left the wounded behind in the mud. I've crawled miles since the battle ended." />
+  <string id="nl4d_rescue_winner_lord_2" text="We won the field against {ENEMY_LORD_NAME}, but {SURVIVOR_LORD_NAME} was so eager to claim the plunder that my battalion's wounded were forgotten in the chaos. I've been stranded here ever since." />
+  <string id="nl4d_rescue_winner_lord_3" text="The victory celebrations over {ENEMY_LORD_NAME}'s defeat started miles away while I lay pinned beneath my dead horse. {SURVIVOR_LORD_NAME}'s vanguard didn't even bother to sweep the field for survivors." />
 
   <string id="nl4d_rescue_naval_lord_count" text="2" />
-  <string id="nl4d_rescue_naval_lord_1" text="Our transport ship splintered into matchwood when the enemy rams struck. I washed ashore clinging to a broken spar after hours adrift in the freezing surf." />
-  <string id="nl4d_rescue_naval_lord_2" text="The naval skirmish was a bloodbath. When our galley went down, I was dragged under by the drowning men and barely clawed my way up onto these rocky shores." />
+  <string id="nl4d_rescue_naval_lord_1" text="Our transport ship splintered into matchwood when {ENEMY_LORD_NAME}'s {ENEMY_FACTION_NAME} rams struck. I washed ashore clinging to a broken spar after hours adrift in the freezing surf." />
+  <string id="nl4d_rescue_naval_lord_2" text="The naval skirmish against {ENEMY_LORD_NAME}'s {ENEMY_FACTION_NAME} fleet was a bloodbath. When our galley went down, I was dragged under by the drowning men and barely clawed my way up onto these rocky shores." />
+
+  <!-- Interactive Hub Player Questions -->
+  <string id="nl4d_rescue_q_battle" text="What actually happened here? Tell me of the battle." />
+  <string id="nl4d_rescue_q_identity" text="Who are you really? What is your story?" />
+  <string id="nl4d_rescue_q_wounds" text="What happened to you? How bad are your wounds?" />
+
+  <!-- Interactive Hub NPC Answers -->
+  <string id="nl4d_rescue_battle_lore_defeated_count" text="3" />
+  <string id="nl4d_rescue_battle_lore_defeated_1" text="{SURVIVOR_LORD_NAME}'s {SURVIVOR_FACTION_NAME} host clashed fiercely with {ENEMY_LORD_NAME}'s {ENEMY_FACTION_NAME} forces near {NEAREST_SETTLEMENT_NAME}. The battle was a slaughter from the start, leaving {BATTLE_CASUALTIES} dead and wounded before {SURVIVOR_LORD_NAME} sounded the retreat and abandoned the fallen." />
+  <string id="nl4d_rescue_battle_lore_defeated_2" text="We engaged {ENEMY_LORD_NAME} ({ENEMY_FACTION_NAME}) under the command of {SURVIVOR_LORD_NAME} right outside {NEAREST_SETTLEMENT_NAME}. When our center collapsed under {ENEMY_LORD_NAME}'s charge, {SURVIVOR_LORD_NAME} ordered an immediate rout, leaving {BATTLE_CASUALTIES} men behind to be slaughtered." />
+  <string id="nl4d_rescue_battle_lore_defeated_3" text="Near the walls of {NEAREST_SETTLEMENT_NAME}, {SURVIVOR_LORD_NAME} and {ENEMY_LORD_NAME} fought a brutal engagement. Over {BATTLE_CASUALTIES} souls fell in the carnage, and when defeat became certain, {SURVIVOR_LORD_NAME} fled without looking back." />
+
+  <string id="nl4d_rescue_battle_lore_winner_count" text="3" />
+  <string id="nl4d_rescue_battle_lore_winner_1" text="{SURVIVOR_LORD_NAME} completely crushed {ENEMY_LORD_NAME}'s {ENEMY_FACTION_NAME} army near {NEAREST_SETTLEMENT_NAME}. Though we won, it cost {BATTLE_CASUALTIES} casualties, and {SURVIVOR_LORD_NAME} marched off with the plunder while leaving crippled veterans behind in the mud." />
+  <string id="nl4d_rescue_battle_lore_winner_2" text="It was a glorious triumph over {ENEMY_LORD_NAME}'s {ENEMY_FACTION_NAME} forces outside {NEAREST_SETTLEMENT_NAME}. But glory has a price of {BATTLE_CASUALTIES} casualties, and {SURVIVOR_LORD_NAME} cared more for the spoils than collecting the wounded." />
+  <string id="nl4d_rescue_battle_lore_winner_3" text="We broke {ENEMY_LORD_NAME} ({ENEMY_FACTION_NAME}) in a decisive struggle near {NEAREST_SETTLEMENT_NAME}. Total casualties reached {BATTLE_CASUALTIES}, but {SURVIVOR_LORD_NAME}'s pursuit was so reckless that the rearguard was entirely forgotten." />
+
+  <string id="nl4d_rescue_identity_lore_count" text="3" />
+  <string id="nl4d_rescue_identity_lore_1" text="I am {SURVIVOR_FULL_NAME}, born within the walls of {BORN_SETTLEMENT_NAME}. Raised in the traditions of {SURVIVOR_CULTURE_NAME} warfare, I swore an oath of loyalty to {SURVIVOR_LORD_NAME}, believing noble lords valued honor above all." />
+  <string id="nl4d_rescue_identity_lore_2" text="They call me {SURVIVOR_FULL_NAME}. My home was {BORN_SETTLEMENT_NAME}, and I was trained in {SURVIVOR_CULTURE_NAME} discipline before taking service under {SURVIVOR_LORD_NAME}." />
+  <string id="nl4d_rescue_identity_lore_3" text="My name is {SURVIVOR_FULL_NAME}, originating from {BORN_SETTLEMENT_NAME}. As a proud {SURVIVOR_CULTURE_NAME} warrior, I pledged my sword to {SURVIVOR_LORD_NAME}, never expecting betrayal." />
+
+  <string id="nl4d_rescue_wounds_lore_count" text="3" />
+  <string id="nl4d_rescue_wounds_lore_1" text="I took a severe blow during {ENEMY_LORD_NAME}'s assault. For {HOURS_SINCE_BATTLE} hours I lay pinned beneath corpses and shattered shields, listening to looters while {SURVIVOR_LORD_NAME}'s banners vanished over the ridge." />
+  <string id="nl4d_rescue_wounds_lore_2" text="The {ENEMY_FACTION_NAME} cavalry trampled me into the dirt. I have survived for {HOURS_SINCE_BATTLE} hours by sheer willpower, waiting while {SURVIVOR_LORD_NAME} cared nothing for my fate." />
+  <string id="nl4d_rescue_wounds_lore_3" text="A spear thrust pierced my armor early in the fight against {ENEMY_LORD_NAME}. I crawled into a ditch and endured {HOURS_SINCE_BATTLE} hours of agony while {SURVIVOR_LORD_NAME} retreated safely." />
 
   <string id="nl4d_rescue_plea" text="You found me just in time. I will never forget this mercy (Relation +{SURVIVOR_RELATION}). Take me with you, and my blade is yours." />
   <string id="nl4d_rescue_accept" text="Agreed. Rise and join my company." />
@@ -80,4 +113,5 @@
   <string id="nl4d_msg_survivor_recruited" text="{HERO_NAME} has joined your party as a loyal companion." />
   <string id="nl4d_msg_survivor_sent_town" text="{HERO_NAME} has been escorted to {TARGET_TOWN_NAME}. You can find them in the local tavern." />
   <string id="nl4d_msg_survivor_evicted" text="{SURVIVOR_NAME} has left your service due to inactivity or world cap limits." />
-</strings>
+  </strings>
+</base>

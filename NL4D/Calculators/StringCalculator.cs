@@ -44,7 +44,8 @@ namespace NL4D.Calculators
                 RolledVariants[baseId] = id;
             }
 
-            MBTextManager.SetTextVariable(variableName.ToUpperInvariant(), new TextObject(id + fallbackString));
+            string resolved = new TextObject(id + fallbackString).ToString();
+            MBTextManager.SetTextVariable(variableName.ToUpperInvariant(), new TextObject("{=!}" + resolved));
         }
 
         public static void ClearDialogVariables()

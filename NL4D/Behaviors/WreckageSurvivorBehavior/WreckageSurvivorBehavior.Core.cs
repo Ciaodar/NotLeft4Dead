@@ -29,6 +29,9 @@ namespace NL4D.Behaviors
         private bool _isInitialRescueConversation;
         private bool _forceNextWreckageSpawn;
         private bool _awaitingConversationLaunchOnTick;
+        private bool _askedBattleLore;
+        private bool _askedIdentity;
+        private bool _askedWounds;
 
         public WreckageSurvivorBehavior()
         {
@@ -145,6 +148,9 @@ namespace NL4D.Behaviors
             _pendingRescueContext = null;
             _isInitialRescueConversation = false;
             _awaitingConversationLaunchOnTick = false;
+            _askedBattleLore = false;
+            _askedIdentity = false;
+            _askedWounds = false;
             StringCalculator.ClearDialogVariables();
         }
     }

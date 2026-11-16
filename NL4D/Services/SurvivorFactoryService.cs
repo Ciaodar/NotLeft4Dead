@@ -108,6 +108,26 @@ namespace NL4D.Services
             // Step 6: Generate custom name matching hero's generated gender (male or female)
             var (fullName, firstName) = SurvivorNameCalculator.GenerateName(context.Culture, hero.IsFemale);
             hero.SetName(fullName, firstName);
+            hero.SetHasMet();
+
+            string formerLeaderName = context.FormerLeaderHero?.Name?.ToString()
+                ?? (!string.IsNullOrWhiteSpace(context.FormerPartyName) ? context.FormerPartyName : "Former Commander");
+
+            string formerFactionName = context.FormerFaction?.Name?.ToString()
+                ?? string.Empty;
+
+            string enemyFactionName = context.EnemyFaction?.Name?.ToString()
+                ?? (!string.IsNullOrWhiteSpace(context.EnemyPartyName) ? context.EnemyPartyName : string.Empty);
+
+            var bio = new TextObject("{=nl4d_survivor_encyclopedia_bio}{HERO_NAME} fought under the banner of {SURVIVOR_LORD_NAME} ({SURVIVOR_FACTION_NAME}) in a brutal clash against {ENEMY_LORD_NAME} ({ENEMY_FACTION_NAME}) that claimed {BATTLE_CASUALTIES} casualties. Left for dead in the wreckage, {HERO_NAME} was rescued by {PLAYER_LINK}.");
+            bio.SetTextVariable("HERO_NAME", hero.Name);
+            bio.SetTextVariable("SURVIVOR_LORD_NAME", context.FormerLeaderHero?.EncyclopediaLinkWithName ?? new TextObject(formerLeaderName));
+            bio.SetTextVariable("SURVIVOR_FACTION_NAME", context.FormerFaction?.EncyclopediaLinkWithName ?? new TextObject(formerFactionName));
+            bio.SetTextVariable("ENEMY_LORD_NAME", context.EnemyLeaderHero?.EncyclopediaLinkWithName ?? context.EnemyFaction?.EncyclopediaLinkWithName ?? new TextObject(enemyFactionName));
+            bio.SetTextVariable("ENEMY_FACTION_NAME", context.EnemyFaction?.EncyclopediaLinkWithName ?? new TextObject(enemyFactionName));
+            bio.SetTextVariable("BATTLE_CASUALTIES", context.TotalCasualties);
+            bio.SetTextVariable("PLAYER_LINK", Hero.MainHero?.EncyclopediaLinkWithName ?? new TextObject("a passing commander"));
+            hero.EncyclopediaText = bio;
 
             // Step 7: Set wounded HP ratio
             float hpRatio = MBRandom.RandomFloatRanged(Nl4dSettingsManager.InitialWoundedHpRatioMin, Nl4dSettingsManager.InitialWoundedHpRatioMax);
@@ -125,15 +145,6 @@ namespace NL4D.Services
             DetachFromNativeCompanionKiller(hero, archetype);
 
             // Step 10: Build and return record
-            string formerLeaderName = context.FormerLeaderHero?.Name?.ToString()
-                ?? (!string.IsNullOrWhiteSpace(context.FormerPartyName) ? context.FormerPartyName : "Former Commander");
-
-            string formerFactionName = context.FormerFaction?.Name?.ToString()
-                ?? string.Empty;
-
-            string enemyFactionName = context.EnemyFaction?.Name?.ToString()
-                ?? (!string.IsNullOrWhiteSpace(context.EnemyPartyName) ? context.EnemyPartyName : string.Empty);
-
             var record = new RescuedSurvivorRecord(
                 hero,
                 formerLeaderName,

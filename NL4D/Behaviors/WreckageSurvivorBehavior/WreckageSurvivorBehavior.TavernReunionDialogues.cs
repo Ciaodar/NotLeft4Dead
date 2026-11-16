@@ -104,7 +104,19 @@ namespace NL4D.Behaviors
                 return false;
             }
 
-            return TryGetUnrecruitedRecord(currentHero, out _);
+            if (!TryGetUnrecruitedRecord(currentHero, out var rec))
+            {
+                return false;
+            }
+
+            currentHero.SetHasMet();
+
+            if (rec != null && !string.IsNullOrWhiteSpace(rec.FormerLeaderName))
+            {
+                MBTextManager.SetTextVariable("SURVIVOR_LORD_NAME", new TextObject(rec.FormerLeaderName));
+            }
+
+            return true;
         }
 
         private bool OnTavernReunionRecruitClickableCondition(out TextObject explanation)

@@ -13,6 +13,7 @@ namespace NL4D.Data
         public IFaction? FormerFaction { get; set; }
         public string FormerPartyName { get; set; } = string.Empty;
         public IFaction? EnemyFaction { get; set; }
+        public Hero? EnemyLeaderHero { get; set; }
         public string EnemyPartyName { get; set; } = string.Empty;
         public CultureObject Culture { get; set; } = null!;
         public bool WasFromWinningSide { get; set; }
@@ -37,13 +38,15 @@ namespace NL4D.Data
             bool isNavalWreckage,
             int totalCasualties,
             int hoursElapsedSinceBattle,
-            CampaignVec2 position)
+            CampaignVec2 position,
+            Hero? enemyLeaderHero = null)
         {
             WreckageId = wreckageId ?? string.Empty;
             FormerLeaderHero = formerLeaderHero;
             FormerFaction = formerFaction;
             FormerPartyName = formerPartyName ?? string.Empty;
             EnemyFaction = enemyFaction;
+            EnemyLeaderHero = enemyLeaderHero;
             EnemyPartyName = enemyPartyName ?? string.Empty;
             Culture = culture;
             WasFromWinningSide = wasFromWinningSide;

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<strings>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="string">
+  <tags>
+    <tag language="Türkçe" />
+  </tags>
+  <strings>
   <!-- MCM Settings -->
   <string id="nl4d_mcm_display_name" text="Not Left 4 Dead" />
   <string id="nl4d_mcm_group_general" text="Genel" />
@@ -45,20 +49,49 @@
   <string id="nl4d_survivor_aserai_name" text="Aserai Hayatta Kalanı" />
   <string id="nl4d_survivor_khuzait_name" text="Kuzait Hayatta Kalanı" />
 
+  <!-- Encyclopedia Biography -->
+  <string id="nl4d_survivor_encyclopedia_bio" text="{HERO_NAME}, {SURVIVOR_LORD_NAME} ({SURVIVOR_FACTION_NAME}) sancağı altında {ENEMY_LORD_NAME} ({ENEMY_FACTION_NAME}) kuvvetlerine karşı verilen ve {BATTLE_CASUALTIES} zayiatla sonuçlanan kanlı savaşta çarpıştı. Enkazda ölüme terk edilen {HERO_NAME}, {PLAYER_LINK} tarafından kurtarıldı." />
+
   <!-- Wave 2 Rescue Dialogue (Multi-variant count / 1..N) -->
   <string id="nl4d_rescue_defeated_lord_count" text="3" />
-  <string id="nl4d_rescue_defeated_lord_1" text="{SURVIVOR_LORD_NAME}'ın sadık bir hizmetkarıydım. {ENEMY_FACTION_NAME} güçleri üzerimize çöktüğünde beni arama zahmetine bile girmeden yaralı bir şekilde burada bıraktı. {HOURS_SINCE_BATTLE} saattir bu cesetlerin arasında ölmeyi bekliyordum." />
-  <string id="nl4d_rescue_defeated_lord_2" text="Efendimiz {SURVIVOR_LORD_NAME} bize hattı tutmamızı emretti, ancak kanatlar yarıldığı anda kaçtı. {ENEMY_FACTION_NAME} hepimizi kılıçtan geçirdi. Sadece ceset yığınlarının arasında ölü taklidi yaparak hayatta kalabildim." />
-  <string id="nl4d_rescue_defeated_lord_3" text="Bozgun tamdı. {SURVIVOR_LORD_NAME} kendi canını kurtarmak için artçıları yüz üstü bıraktı ve {ENEMY_FACTION_NAME} ordumuzu paramparça etti. Parçalanmış kalkanımla {HOURS_SINCE_BATTLE} saattir burada mahsur durumdayım." />
+  <string id="nl4d_rescue_defeated_lord_1" text="{SURVIVOR_LORD_NAME}'ın sadık bir hizmetkarıydım. {ENEMY_LORD_NAME} komutasındaki {ENEMY_FACTION_NAME} güçleri üzerimize çöktüğünde beni arama zahmetine bile girmeden yaralı bir şekilde burada bıraktı. {HOURS_SINCE_BATTLE} saattir bu cesetlerin arasında ölmeyi bekliyordum." />
+  <string id="nl4d_rescue_defeated_lord_2" text="Efendimiz {SURVIVOR_LORD_NAME} bize hattı tutmamızı emretti ama {ENEMY_LORD_NAME} kanatları yardığı anda arkasına bile bakmadan kaçtı. {ENEMY_FACTION_NAME} hepimizi kılıçtan geçirdi; sadece ceset yığınlarının altında ölü taklidi yaparak hayatta kalabildim." />
+  <string id="nl4d_rescue_defeated_lord_3" text="Bozgun tam bir felaketti. {SURVIVOR_LORD_NAME} kendi canını kurtarmak için artçıları {ENEMY_LORD_NAME} ve {ENEMY_FACTION_NAME} ordusunun önüne yem olarak attı. Parçalanmış kalkanımla {HOURS_SINCE_BATTLE} saattir bu kan gölünde sürünüyorum." />
 
   <string id="nl4d_rescue_winner_lord_count" text="3" />
-  <string id="nl4d_rescue_winner_lord_1" text="Zafer kazanılmış olsa bile, {SURVIVOR_LORD_NAME}'ın ordusu takip sırasında çok hızlı hareket etti ve yaralıları çamurlar içinde geride bıraktı. Savaş bittiğinden beri kilometrelerce yol süründüm." />
-  <string id="nl4d_rescue_winner_lord_2" text="Meydanı kazandık ancak {SURVIVOR_LORD_NAME} ganimet peşinde koşmaktan birliğimizdeki yaralıları tamamen unuttu. O günden beri burada mahsurum." />
-  <string id="nl4d_rescue_winner_lord_3" text="Zafer kutlamaları kilometrelerce ötede başlarken ben ölen atımın altında sıkışıp kalmıştım. {SURVIVOR_LORD_NAME}'ın öncü birlikleri hayatta kalanları aramak için zahmet bile etmedi." />
+  <string id="nl4d_rescue_winner_lord_1" text="{ENEMY_LORD_NAME}'ın ordusuna karşı zafer kazanılmış olsa bile, {SURVIVOR_LORD_NAME}'ın ordusu takip sırasında çok hızlı hareket etti ve yaralıları çamurlar içinde geride bıraktı. Savaş bittiğinden beri kilometrelerce yol süründüm." />
+  <string id="nl4d_rescue_winner_lord_2" text="{ENEMY_LORD_NAME}'a karşı meydanı kazandık ancak {SURVIVOR_LORD_NAME} ganimet peşinde koşmaktan birliğimizdeki yaralıları tamamen unuttu. O günden beri burada mahsurum." />
+  <string id="nl4d_rescue_winner_lord_3" text="{ENEMY_LORD_NAME}'ın yenilgisi ardından zafer kutlamaları kilometrelerce ötede başlarken ben ölen atımın altında sıkışıp kalmıştım. {SURVIVOR_LORD_NAME}'ın öncü birlikleri hayatta kalanları aramak için zahmet bile etmedi." />
 
   <string id="nl4d_rescue_naval_lord_count" text="2" />
-  <string id="nl4d_rescue_naval_lord_1" text="Düşman gemileri çarptığında nakliye gemimiz un ufak oldu. Saatlerce dondurucu dalgaların arasında sürüklendikten sonra kırık bir direğe tutunarak karaya vurdum." />
-  <string id="nl4d_rescue_naval_lord_2" text="Deniz savaşı tam bir kan gölüydü. Kadırgamız batarken boğulan adamlar beni de dibe çekiyordu, zorlukla bu kayalık kıyılara tırmanabildim." />
+  <string id="nl4d_rescue_naval_lord_1" text="{ENEMY_LORD_NAME}'ın {ENEMY_FACTION_NAME} koçbaşları saldırdığında nakliye gemimiz un ufak oldu. Saatlerce dondurucu dalgaların arasında sürüklendikten sonra kırık bir direğe tutunarak karaya vurdum." />
+  <string id="nl4d_rescue_naval_lord_2" text="{ENEMY_LORD_NAME} filosuna karşı yapılan deniz savaşı tam bir kan gölüydü. Kadırgamız batarken boğulan adamlar beni de dibe çekiyordu, zorlukla bu kayalık kıyılara tırmanabildim." />
+
+  <!-- Interactive Hub Player Questions -->
+  <string id="nl4d_rescue_q_battle" text="Burada tam olarak ne yaşandı? Bana savaşı anlat." />
+  <string id="nl4d_rescue_q_identity" text="Sen gerçekte kimsin? Hikayen nedir?" />
+  <string id="nl4d_rescue_q_wounds" text="Sana ne oldu? Yaraların ne durumda?" />
+
+  <!-- Interactive Hub NPC Answers -->
+  <string id="nl4d_rescue_battle_lore_defeated_count" text="3" />
+  <string id="nl4d_rescue_battle_lore_defeated_1" text="{SURVIVOR_LORD_NAME}'ın {SURVIVOR_FACTION_NAME} ordusu, {ENEMY_LORD_NAME}'ın {ENEMY_FACTION_NAME} kuvvetleriyle {NEAREST_SETTLEMENT_NAME} yakınlarında şiddetle çarpıştı. Savaş baştan sona bir kıyımdı; {SURVIVOR_LORD_NAME} geri çekilme emri verip yaralıları yüzüstü bırakmadan önce {BATTLE_CASUALTIES} ölü ve yaralı bırakıldı." />
+  <string id="nl4d_rescue_battle_lore_defeated_2" text="{NEAREST_SETTLEMENT_NAME} dışında {SURVIVOR_LORD_NAME} komutasında {ENEMY_LORD_NAME} ({ENEMY_FACTION_NAME}) ile savaştık. Merkezimiz {ENEMY_LORD_NAME} yükü altında çökünce {SURVIVOR_LORD_NAME} ani bozgun emri verdi ve {BATTLE_CASUALTIES} askeri katledilmeleri için geride bıraktı." />
+  <string id="nl4d_rescue_battle_lore_defeated_3" text="{NEAREST_SETTLEMENT_NAME} surları yakınında {SURVIVOR_LORD_NAME} ve {ENEMY_LORD_NAME} acımasız bir çatışmaya girdi. Kırgında {BATTLE_CASUALTIES} can düşerken, yenilgi kesinleştiğinde {SURVIVOR_LORD_NAME} arkasına bakmadan kaçtı." />
+
+  <string id="nl4d_rescue_battle_lore_winner_count" text="3" />
+  <string id="nl4d_rescue_battle_lore_winner_1" text="{SURVIVOR_LORD_NAME}, {NEAREST_SETTLEMENT_NAME} yakınlarında {ENEMY_LORD_NAME}'ın {ENEMY_FACTION_NAME} ordusunu tamamen ezdi. Kazansak da bu {BATTLE_CASUALTIES} zayiata mal oldu ve {SURVIVOR_LORD_NAME} sakat gazileri çamurda bırakarak ganimetle yürüdü." />
+  <string id="nl4d_rescue_battle_lore_winner_2" text="{NEAREST_SETTLEMENT_NAME} dışında {ENEMY_LORD_NAME}'ın {ENEMY_FACTION_NAME} güçlerine karşı görkemli bir zaferdi. Ancak zaferin bedeli {BATTLE_CASUALTIES} zayiattı ve {SURVIVOR_LORD_NAME} yaralıları toplamak yerine ganimetle ilgilendi." />
+  <string id="nl4d_rescue_battle_lore_winner_3" text="{NEAREST_SETTLEMENT_NAME} yakınlarında {ENEMY_LORD_NAME} ({ENEMY_FACTION_NAME}) ordusunu bozguna uğrattık. Toplam zayiat {BATTLE_CASUALTIES} oldu ancak {SURVIVOR_LORD_NAME}'ın takibi o kadar dikkatsizdi ki artçılar tamamen unutuldu." />
+
+  <string id="nl4d_rescue_identity_lore_count" text="3" />
+  <string id="nl4d_rescue_identity_lore_1" text="Ben {SURVIVOR_FULL_NAME}, {BORN_SETTLEMENT_NAME} surları içinde doğdum. {SURVIVOR_CULTURE_NAME} savaş gelenekleriyle yetiştim ve asil lordların onura her şeyden çok değer olduğuna inanarak {SURVIVOR_LORD_NAME}'a sadakat yemişi ettim." />
+  <string id="nl4d_rescue_identity_lore_2" text="Bana {SURVIVOR_FULL_NAME} derler. Memleketim {BORN_SETTLEMENT_NAME} idi ve {SURVIVOR_LORD_NAME} altında hizmete girmeden önce {SURVIVOR_CULTURE_NAME} disipliniyle eğitildim." />
+  <string id="nl4d_rescue_identity_lore_3" text="Adım {SURVIVOR_FULL_NAME}, {BORN_SETTLEMENT_NAME} kökenliyim. Gururlu bir {SURVIVOR_CULTURE_NAME} savaşçısı olarak kılıcımı {SURVIVOR_LORD_NAME}'a adadım, asla ihanet beklemiyordum." />
+
+  <string id="nl4d_rescue_wounds_lore_count" text="3" />
+  <string id="nl4d_rescue_wounds_lore_1" text="{ENEMY_LORD_NAME}'ın saldırısı sırasında ağır bir darbe aldım. {HOURS_SINCE_BATTLE} saattir cesetlerin ve kırık kalkanların altında sıkışmış halde yağmacıları dinledim; {SURVIVOR_LORD_NAME}'ın sancağı ise sırttan gözden kayboldu." />
+  <string id="nl4d_rescue_wounds_lore_2" text="{ENEMY_FACTION_NAME} süvarileri beni toprağa çiğnedi. {SURVIVOR_LORD_NAME} kaderimle ilgilenmezken, saf iradeyle {HOURS_SINCE_BATTLE} saattir hayatta kaldım." />
+  <string id="nl4d_rescue_wounds_lore_3" text="{ENEMY_LORD_NAME} ile olan mücadelenin başında bir mızrak zırhımı deldi. {SURVIVOR_LORD_NAME} güvenle geri çekilirken bir hendeğe sürünüp {HOURS_SINCE_BATTLE} saat boyunca acı çektim." />
 
   <string id="nl4d_rescue_plea" text="Beni tam vaktinde buldunuz. Bu merhametinizi asla unutmayacağım (İlişki +{SURVIVOR_RELATION}). Beni yanınıza alın, kılıcım emrinizdedir." />
   <string id="nl4d_rescue_accept" text="Kabul. Kalk ve bölüğüme katıl." />
@@ -80,4 +113,5 @@
   <string id="nl4d_msg_survivor_recruited" text="{HERO_NAME} sadık bir yoldaş olarak birliğinize katıldı." />
   <string id="nl4d_msg_survivor_sent_town" text="{HERO_NAME}, {TARGET_TOWN_NAME} şehrine ulaştırıldı. Onu yerel handa bulabilirsiniz." />
   <string id="nl4d_msg_survivor_evicted" text="{SURVIVOR_NAME}, eylemsizlik veya dünya havuz sınırı nedeniyle hizmetinizden ayrıldı." />
-</strings>
+  </strings>
+</base>
