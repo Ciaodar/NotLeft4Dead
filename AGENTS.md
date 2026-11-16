@@ -62,7 +62,7 @@ Every developer and agent must strictly follow this 5-stage lifecycle:
 - **Translations**: Localized XMLs are located in `NL4D/ModuleData/Languages/`. Ensure both `EN` and `TR` are updated when adding new strings.
 
 ### Description Maintenance Rule (Mandatory)
-- **`DESCRIPTION.md` Must Stay in Sync**: Whenever any gameplay mechanic, MCM/JSON setting, console command, dialogue flow, dependency, supported Bannerlord version, or localization language is added, changed, or removed, agents and developers **MUST** update `DESCRIPTION.md` in the same task/commit so it always accurately reflects the current state of the mod.
+- **`DESCRIPTION.md` (Nexus Mods BBCode) Must Stay in Sync**: `DESCRIPTION.md` is formatted in **Nexus Mods BBCode** (`[size=4][b]...[/b][/size]`, `[list]`, `[color=#D4D4D8]`) for direct copy-paste to Nexus Mods. Whenever any gameplay mechanic, MCM/JSON setting, console command, dialogue flow, dependency, supported Bannerlord version, or localization language is added, changed, or removed, agents and developers **MUST** update `DESCRIPTION.md` in the same task/commit so it always accurately reflects the current state of the mod.
 
 ---
 
