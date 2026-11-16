@@ -61,6 +61,9 @@ Every developer and agent must strictly follow this 5-stage lifecycle:
 - **User Interface**: All user-facing strings must use the localization system (`{=ID}Text`).
 - **Translations**: Localized XMLs are located in `NL4D/ModuleData/Languages/`. Ensure both `EN` and `TR` are updated when adding new strings.
 
+### Description Maintenance Rule (Mandatory)
+- **`DESCRIPTION.md` Must Stay in Sync**: Whenever any gameplay mechanic, MCM/JSON setting, console command, dialogue flow, dependency, supported Bannerlord version, or localization language is added, changed, or removed, agents and developers **MUST** update `DESCRIPTION.md` in the same task/commit so it always accurately reflects the current state of the mod.
+
 ---
 
 ## File Structure
@@ -68,6 +71,7 @@ Every developer and agent must strictly follow this 5-stage lifecycle:
 ```
 NotLeft4Dead/
 ├── NotLeft4Dead.sln
+├── DESCRIPTION.md
 ├── README.md
 ├── AGENTS.md
 ├── .gitignore
